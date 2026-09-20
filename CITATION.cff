@@ -12,7 +12,8 @@ authors:
   - name: "Jiang Fen"
   - family-names: Xu
     given-names: Ganggang
-version: 1.0.0
+version: 1.0.1
+date-released: 2026-09-20
 repository-code: "https://github.com/haijun321/HCL-TRPCA"
 license: BSD-3-Clause
 keywords:

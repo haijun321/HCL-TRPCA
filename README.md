@@ -8,6 +8,8 @@ HCL-TRPCA separates abnormality detection, entry/block/slice granularity attribu
 
 Hierarchy is evaluated primarily through granularity attribution. Recovery also depends on suppression strength, rank, and the frozen weighted criterion; the method does not provide uniformly better reconstruction across datasets.
 
+This archive is **release v1.0.1**. It clarifies the semantics of the SBI ground-truth files and prevents foreground segmentation masks from being used as clean-background reconstruction references. The HCL-TRPCA algorithm, optimization procedure, frozen parameters, and archived structural diagnostic values are unchanged from v1.0.0. See [CHANGELOG.md](CHANGELOG.md) and [SBI_REFERENCE_SEMANTICS.md](SBI_REFERENCE_SEMANTICS.md).
+
 ## Contents
 
 | Directory or file | Contents |
@@ -26,6 +28,8 @@ Hierarchy is evaluated primarily through granularity attribution. Recovery also 
 | `figures/` | Four archived experiment figures |
 | `environment/` | Recorded MATLAB environment |
 | `external/` | External solver interfaces and availability limitations |
+| `SBI_REFERENCE_SEMANTICS.md` | SBI ground-truth audit and metric-validity decision |
+| `CHANGELOG.md` | Release history |
 | `SHA256SUMS` | SHA-256 checksums for the release files |
 
 ## Requirements
@@ -46,7 +50,11 @@ R = reproduce_synthetic('SMOKE');
 
 The smoke test uses a generated 64-by-64-by-30 tensor and requires neither external datasets nor baseline solvers. It checks the two frozen recovery weights and saves its output under `generated_results/`.
 
-`preflight_public_release` checks configuration loading and entry-point availability. It is not a numerical validation of every experiment. Missing external solvers are reported separately; they do not prevent the HCL smoke test from running.
+`preflight_public_release` checks configuration loading, entry-point availability, and the compact v1.0.1 SBI semantic artifacts. It is not a numerical validation of every experiment. Missing external solvers are reported separately; they do not prevent the HCL smoke test or the SBI semantic audit from running. The semantic audit can also be invoked directly without raw data:
+
+```matlab
+report = audit_sbi_release_semantics();
+```
 
 ## Synthetic experiments
 
@@ -122,7 +130,9 @@ T = reproduce_sbi();
 
 Urban retains all 210 bands and uses rank 25. Without a clean reference, its outputs support structural and weighting diagnostics, not clean-cube reconstruction accuracy.
 
-SBI uses a 98% Fourier-energy rank rule capped at 15. The archived SBI CSV reports ranks, selection fractions, relative effective sample sizes, iteration counts, and stopping diagnostics. The runner can calculate optional background metrics when a reference field is present, but file presence alone does not verify spatial alignment or reference semantics. Those optional values are not the reference-validated evidence reported in the archived CSV. See the [SBI protocol](data_protocols/sbi_preprocessing.md).
+SBI uses a 98% Fourier-energy rank rule capped at 15. The archived SBI CSV reports ranks, selection fractions, relative effective sample sizes, iteration counts, and stopping diagnostics. The distributed SBI `groundtruth/gt*.png` files audited for Board and CAVIAR1 are foreground segmentation masks rather than clean-background reference images. They are therefore not used to calculate PSNR, SSIM, MS-SSIM, AGE, pEPs, or pCEPs.
+
+The v1.0.1 runner defaults all SBI reconstruction-reference metrics to `NaN`. It enables PSNR, SSIM, and AGE only for a separately supplied clean background that is explicitly tagged with both `GroundTruthType = 'clean_background_reference'` and `ValidReconstructionReference = true`. Field presence alone is insufficient. The manuscript's SBI evidence is consequently interpreted as real-video structural and operational validation, not as a reference-based background-recovery benchmark. See the [SBI protocol](data_protocols/sbi_preprocessing.md) and [reference-semantics note](SBI_REFERENCE_SEMANTICS.md).
 
 ## Results and coverage
 
