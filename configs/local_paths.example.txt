@@ -1,0 +1,17 @@
+function P = local_paths()
+%LOCAL_PATHS Local machine-specific data locations.
+% Copy this template to:
+%   configs/local_paths.m
+% Edit the paths for your machine.
+% Do NOT commit local_paths.m.
+
+P = struct();
+
+% Optional common root:
+P.dataRoot = 'PATH_TO_DATA';
+
+P.pavia = fullfile(P.dataRoot,'PaviaU.mat');
+P.urban = fullfile(P.dataRoot,'Urban_F210.mat');
+P.sbiRoot = fullfile(P.dataRoot,'MAT');
+
+end

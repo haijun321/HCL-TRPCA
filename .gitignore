@@ -1,0 +1,19 @@
+*.asv
+*.autosave
+*.log
+*.tmp
+*.bak
+data/
+datasets/
+configs/local_paths.m
+**/*_HCL_FINAL.mat
+**/core_fields*.mat
+**/memory_snapshots*.mat
+matlab_crash_dump.*
+java.log.*
+
+# Local/public-release exclusions
+generated_results/
+
+# Generated experiment outputs
+code/pavia/results_HCL_DSP_FINAL/

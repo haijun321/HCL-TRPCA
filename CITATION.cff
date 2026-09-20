@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite this HCL-TRPCA software release and the associated manuscript."
+title: "HCL-TRPCA: Hierarchical Contamination-Level Attribution for Robust Tensor PCA under Mixed Structured Corruption"
+type: software
+authors:
+  - family-names: Jiang
+    given-names: Haijun
+  - family-names: Han
+    given-names: Li
+  - family-names: Wang
+    given-names: Yue
+  - name: "Jiang Fen"
+  - family-names: Xu
+    given-names: Ganggang
+version: 1.0.0
+repository-code: "https://github.com/haijun321/HCL-TRPCA"
+license: BSD-3-Clause
+keywords:
+  - robust tensor PCA
+  - structured corruption
+  - granularity attribution
+  - hyperspectral imaging
