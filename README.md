@@ -8,8 +8,47 @@ HCL-TRPCA separates abnormality detection, entry/block/slice granularity attribu
 
 Hierarchy is evaluated primarily through granularity attribution. Recovery also depends on suppression strength, rank, and the frozen weighted criterion; the method does not provide uniformly better reconstruction across datasets.
 
-This archive is **release v1.0.1**. It clarifies the semantics of the SBI ground-truth files and prevents foreground segmentation masks from being used as clean-background reconstruction references. The HCL-TRPCA algorithm, optimization procedure, frozen parameters, and archived structural diagnostic values are unchanged from v1.0.0. See [CHANGELOG.md](CHANGELOG.md) and [SBI_REFERENCE_SEMANTICS.md](SBI_REFERENCE_SEMANTICS.md).
+This archive is **release v1.0.2**, synchronized with the submission-stage
+HCL-TRPCA manuscript and Supplementary Material. It extends the v1.0.1
+public snapshot with attribution-control materials, recovery-mechanism
+artifacts, Pavia rank-budget and fixed-mask diagnostics, paired statistical
+audit materials, and corresponding publication figures. The HCL-TRPCA core
+method, frozen primary configuration, development/confirmation seed split,
+and primary reported numerical results are unchanged. The SBI ground-truth
+semantics clarification introduced in v1.0.1 is retained. See
+[CHANGELOG.md](CHANGELOG.md),
+[SBI_REFERENCE_SEMANTICS.md](SBI_REFERENCE_SEMANTICS.md), and
+[`docs/release_v1.0.2/RESULTS_INDEX.md`](docs/release_v1.0.2/RESULTS_INDEX.md).
 
+## v1.0.2 submission reproducibility update
+
+Release v1.0.2 synchronizes the public repository with the
+submission-stage HCL-TRPCA manuscript and Supplementary Material.
+
+Relative to v1.0.1, this release adds:
+
+- development-calibrated nonhierarchical attribution-control materials
+  and frozen calibration coefficients;
+- recovery-floor and mask-source mechanism-control artifacts;
+- Pavia University rank-budget V2.1 DIAG results;
+- Pavia fixed-mask recovery trajectories and the corresponding
+  publication figure;
+- archived paired confirmation statistics and a release-side
+  reproduction/audit utility;
+- result-to-manuscript mapping and portability documentation.
+
+The HCL-TRPCA core method, frozen primary configuration, development
+seeds (20261001--20261005), confirmation seeds
+(20270001--20270030), and primary numerical results are unchanged.
+
+See `docs/release_v1.0.2/RESULTS_INDEX.md` for the mapping between
+released numerical files and manuscript tables/figures.
+
+### External data location
+
+Raw third-party datasets are not redistributed. Set the environment
+variable `HCL_TRPCA_DATA_ROOT` to the directory containing the required
+datasets, or place the expected files under `<repository>/data`.
 ## Contents
 
 | Directory or file | Contents |

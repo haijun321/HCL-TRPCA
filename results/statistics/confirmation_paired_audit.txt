@@ -1,0 +1,17 @@
+Frozen confirmation paired-statistics audit
+============================================
+Raw file: archived confirmation_all_final.csv used during manuscript preparation; the release includes the derived paired rows in confirmation_paired_differences.csv.
+Primary comparison: HCL-TRPCA vs p-TRPCA
+Expected pairs per scenario: 30
+Bootstrap resamples: 10000
+Bootstrap seed: 2026091601
+CI: percentile paired-bootstrap 95% CI for mean DeltaNRE
+Test: two-sided Wilcoxon signed-rank
+Multiplicity family: EB, ES, BS, EBS
+Correction: Holm
+Win definition: DeltaNRE < 0
+
+EB: n=30, win=27, loss=3, tie=0, meanD=-0.004747960264, medianD=-0.007857549809, CI=[-0.007445887591,-0.001051740017], rawP=0.0003881114288, HolmP=0.0003881114288
+ES: n=30, win=30, loss=0, tie=0, meanD=-0.008367370902, medianD=-0.008373390893, CI=[-0.008387898697,-0.008346437402], rawP=1.734397628e-06, HolmP=6.937590513e-06
+BS: n=30, win=30, loss=0, tie=0, meanD=-0.008209124981, medianD=-0.008203913467, CI=[-0.008225262114,-0.008192041817], rawP=1.734397628e-06, HolmP=6.937590513e-06
+EBS: n=30, win=30, loss=0, tie=0, meanD=-0.008031072551, medianD=-0.008113222377, CI=[-0.008117504178,-0.00788938606], rawP=1.734397628e-06, HolmP=6.937590513e-06

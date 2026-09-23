@@ -2,6 +2,38 @@
 
 All notable changes to the public HCL-TRPCA software archive are documented here.
 
+## v1.0.2 — 2026-09-23
+
+### Added
+- Development-calibrated nonhierarchical attribution-control materials.
+- Frozen Calibrated-Flat calibration coefficients.
+- Recovery-floor and mask-source mechanism-control artifacts.
+- Pavia rank-budget V2.1 DIAG results.
+- Pavia fixed-mask recovery trajectories.
+- Paired confirmation-statistics audit utility.
+- Final manuscript-oriented diagnostic figures.
+
+### Documentation / portability
+- Added result-to-manuscript mapping.
+- Added v1.0.2 portability notes.
+- Removed author-machine Pavia data-path dependencies from the public update.
+- Public real-data code now resolves data through
+  `HCL_TRPCA_DATA_ROOT` or `<repository>/data`.
+
+### Unchanged
+- HCL-TRPCA core method.
+- Frozen primary HCL configuration.
+- Development and confirmation seed sets.
+- Primary confirmation observations and reported outcomes.
+
+### Reproducibility note
+The exact legacy development runner for the recovery-mechanism control
+and the exact legacy paired-statistics postprocessor were not present in
+the final staging archive. Their frozen numerical outputs are archived.
+The v1.0.2 repository provides a separately identified audit utility for
+the archived paired statistics and does not represent it as the original
+legacy source.
+
 ## v1.0.1 - 2026-09-20
 
 ### SBI ground-truth semantics clarification

@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+  \centering
+  \caption{Mean HCL NRE at different recovery weight floors over five development seeds. The relative reduction from 0.01 to zero is computed from unrounded means.}
+  \label{tab:hcl_recovery_floor}
+  \small
+  \setlength{\tabcolsep}{5pt}
+  \fitTable{%
+\begin{tabular}{lrrrr}
+    \hline
+    Scenario &
+    $\epsilon_{\mathrm{rec}}=0.01$ &
+    $\epsilon_{\mathrm{rec}}=0.001$ &
+    $\epsilon_{\mathrm{rec}}=0$ &
+    Reduction \\[3pt]
+    \hline
+    EB  & 0.030511 & 0.008689 & 0.007819 & 74.37\% \\[3pt]
+    ES  & 0.020100 & 0.007880 & 0.007609 & 62.15\% \\[3pt]
+    BS  & 0.024615 & 0.008267 & 0.007925 & 67.80\% \\[3pt]
+    EBS & 0.029377 & 0.008738 & 0.008227 & 72.00\% \\[3pt]
+    \hline
+  \end{tabular}
+}
+\end{table}

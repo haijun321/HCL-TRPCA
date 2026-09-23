@@ -1,0 +1,71 @@
+PAVIAU RANK-BUDGET DIAGNOSTIC V2.1 REPORT
+Generated: 19-Sep-2026 11:19:57
+
+SCIENTIFIC PURPOSE
+Failure-mechanism diagnosis only. The frozen V3.2 primary Pavia comparison is not replaced by this diagnostic.
+
+ACTIVE DESIGN
+Seeds   : 20280001 ... 20280010 (10 seeds)
+Ranks   : [25 30 61 105]
+Budgets : [80 160 320]
+
+FROZEN REFERENCE-BASED RANK LANDMARKS
+Target 0.90 -> median sampled-slice energy rank 30
+Target 0.95 -> median sampled-slice energy rank 61
+Target 0.98 -> median sampled-slice energy rank 105
+Target 0.99 -> median sampled-slice energy rank 134
+These are post-hoc reference-based diagnostic landmarks, not true tubal ranks and not deployable rank estimates.
+
+GATE D0: PRIMARY-SETTING REPRODUCTION
+r=25, budget=80, N=10
+  NRE: observed 0.373188 | paper 0.373190 | abs diff 0.000002
+  DetectionF1: observed 0.9766 | paper 0.9766 | abs diff 0.0000
+  MaskF1: observed 0.9896 | paper 0.9896 | abs diff 0.0000
+  LevelMacroF1: observed 0.9557 | paper 0.9557 | abs diff 0.0000
+  Status: PASS_GREEN
+
+GATE D1: FROZEN-MASK INVARIANCE ACROSS BUDGETS
+Minimum observed mask agreement to budget 80: 1.000000000000
+Status: PASS. Budget does not change the frozen mask.
+
+GATE D2/D3: CONVERGENCE AND NRE PLATEAU
+
+Rank 25
+  budget 80: NRE 0.373188 +/- 0.004766 | rel 2.618e-03 | tol rate 0.0% | DetectionF1 0.9766 | MaskF1 0.9896 | LevelF1 0.9557
+  budget 160: NRE 0.445830 +/- 0.005703 | rel 1.447e-03 | tol rate 0.0% | DetectionF1 0.9766 | MaskF1 0.9896 | LevelF1 0.9559
+  budget 320: NRE 0.523946 +/- 0.009468 | rel 7.951e-04 | tol rate 0.0% | DetectionF1 0.9765 | MaskF1 0.9896 | LevelF1 0.9560
+  relative NRE change 160->320: 14.909%  [NOT PLATEAU]
+
+Rank 30
+  budget 80: NRE 0.342712 +/- 0.003169 | rel 2.613e-03 | tol rate 0.0% | DetectionF1 0.9795 | MaskF1 0.9897 | LevelF1 0.9596
+  budget 160: NRE 0.412807 +/- 0.004305 | rel 1.406e-03 | tol rate 0.0% | DetectionF1 0.9797 | MaskF1 0.9897 | LevelF1 0.9599
+  budget 320: NRE 0.488796 +/- 0.008809 | rel 7.832e-04 | tol rate 0.0% | DetectionF1 0.9797 | MaskF1 0.9897 | LevelF1 0.9601
+  relative NRE change 160->320: 15.546%  [NOT PLATEAU]
+
+Rank 61
+  budget 80: NRE 1.006049 +/- 0.037050 | rel 2.008e-03 | tol rate 0.0% | DetectionF1 0.8959 | MaskF1 0.8829 | LevelF1 0.8472
+  budget 160: NRE 1.019530 +/- 0.034958 | rel 1.025e-03 | tol rate 0.0% | DetectionF1 0.8954 | MaskF1 0.8829 | LevelF1 0.8467
+  budget 320: NRE 1.030436 +/- 0.032585 | rel 5.466e-04 | tol rate 0.0% | DetectionF1 0.8951 | MaskF1 0.8829 | LevelF1 0.8464
+  relative NRE change 160->320: 1.058%  [PLATEAU <= 2.0%]
+
+Rank 105
+  budget 80: NRE 1.919153 +/- 0.013695 | rel 1.248e-03 | tol rate 0.0% | DetectionF1 0.5144 | MaskF1 0.5246 | LevelF1 0.4169
+  budget 160: NRE 1.938004 +/- 0.014387 | rel 5.464e-04 | tol rate 0.0% | DetectionF1 0.5126 | MaskF1 0.5246 | LevelF1 0.4146
+  budget 320: NRE 1.951827 +/- 0.015169 | rel 2.432e-04 | tol rate 0.0% | DetectionF1 0.5116 | MaskF1 0.5246 | LevelF1 0.4133
+  relative NRE change 160->320: 0.708%  [PLATEAU <= 2.0%]
+
+PAIRED EFFECT DECOMPOSITION
+Budget effect r=25, 80->320: mean delta NRE 0.150758, relative improvement -40.42%, 95% bootstrap CI [0.144444, 0.157696]
+Budget effect r=30, 80->320: mean delta NRE 0.146084, relative improvement -42.64%, 95% bootstrap CI [0.140661, 0.152017]
+Budget effect r=61, 80->320: mean delta NRE 0.024387, relative improvement -2.44%, 95% bootstrap CI [0.021789, 0.027368]
+Budget effect r=105, 80->320: mean delta NRE 0.032675, relative improvement -1.70%, 95% bootstrap CI [0.031611, 0.033515]
+Rank effect at 320, r=25 -> r=30: mean delta NRE -0.035150, relative improvement 6.71%, 95% bootstrap CI [-0.036142, -0.034058]
+Rank effect at 320, r=25 -> r=61: mean delta NRE 0.506489, relative improvement -96.69%, 95% bootstrap CI [0.487962, 0.524082]
+Rank effect at 320, r=25 -> r=105: mean delta NRE 1.427881, relative improvement -272.61%, 95% bootstrap CI [1.419383, 1.435652]
+
+INTERPRETATION RULES
+1) A materially lower NRE at larger budgets with an invariant frozen mask identifies a finite-budget component.
+2) A materially lower NRE at larger ranks after 160->320 NRE has plateaued identifies a model-order component.
+3) If convergence/plateau is reached and reconstruction remains weak across the pre-specified rank grid, retain natural-data model/recovery mismatch as the remaining explanation.
+4) Detection-F1, mask-F1, and level Macro-F1 must be read separately from NRE. Stable structural metrics with changing NRE directly support the attribution/recovery separation claimed in the manuscript.
+5) Do NOT report the best diagnostic setting as independent performance. A changed primary protocol requires fresh Pavia confirmation seeds.
